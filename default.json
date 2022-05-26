@@ -1,0 +1,84 @@
+{
+  "enabledManagers": [
+    "ansible-galaxy",
+    "circleci",
+    "docker-compose",
+    "dockerfile",
+    "gomod",
+    "homebrew",
+    "nodenv",
+    "npm",
+    "nvm",
+    "pre-commit",
+    "terraform-version",
+    "terraform",
+    "pip_requirements",
+    "poetry"
+  ],
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 0,
+  "dependencyDashboard": false,
+  "pre-commit": {
+    "enabled": true
+  },
+  "extends": [
+    "github>whitesource/merge-confidence:beta"
+  ],
+  "labels": [
+    "renovate"
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "addLabels": [
+        "major"
+      ]
+    },
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest",
+        "lockFileMaintenance",
+        "rollback",
+        "bump"
+      ],
+      "addLabels": [
+        "minor"
+      ],
+      "groupName": "minor - default"
+    },
+    {
+      "matchManagers": [
+        "gomod"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest",
+        "lockFileMaintenance",
+        "rollback",
+        "bump"
+      ],
+      "addLabels": [
+        "minor"
+      ],
+      "groupName": "minor - go"
+    },
+    {
+      "matchManagers": [
+        "pre-commit"
+      ],
+      "addLabels": [
+        "pre-commit"
+      ],
+      "schedule": [
+        "on monday before 8am"
+      ]
+    }
+  ]
+}
